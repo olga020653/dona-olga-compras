@@ -207,10 +207,15 @@ footer{
     <p class="muted">El botón se habilita cuando el total sea de al menos $100 USD y los campos obligatorios estén completos y confirmados.</p>
   </section>
   <section class="panel admin">
-    <h2>Administración del catálogo</h2>
-    <p class="muted">Esta versión de prueba guarda los cambios en este navegador y dispositivo. Para que los cambios se publiquen para todos los clientes desde cualquier dispositivo, será necesario conectar un servicio de base de datos y proteger el acceso de administración.</p>
-    <button class="secondary" onclick="toggleAdmin()">Abrir administración local</button>
+    <div id="adminlogin">
+      <button class="secondary" onclick="loginAdmin()">
+        🔐 Acceso de administración
+      </button>
+    </div>
+
     <div id="adminarea" class="hidden">
+      <h2>Administración del catálogo</h2>
+      <p class="muted">Administración del catálogo.</p>
       <p class="muted">Añade, edita o elimina productos. Los cambios locales no se sincronizan todavía con la tienda pública.</p>
       <div class="formgrid">
         <div class="field"><label for="newname">Nombre</label><input id="newname"></div>

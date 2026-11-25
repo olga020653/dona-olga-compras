@@ -118,12 +118,62 @@ function validate(){
 }
 document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',validate));
 document.getElementById('confirm').addEventListener('change',validate);
+
 function sendOrder(){
-  const t=total(); if(t<100)return;
-  const date=new Date().toLocaleString('es-CU',{timeZone:'America/Havana'});
-  const lines=products.filter(p=>cart[p.id]>0).map(p=>`${p.name} x ${cart[p.id]} = ${money(p.price*cart[p.id])}`).join('\\n');
-  const msg=`DOÑA OLGA - NUEVO PEDIDO\\nFecha y hora (Cuba): ${date}\\n\\nCOMPRADOR\\n${buyer.value}\\nPaís: ${country.value}\\nTeléfono: ${phone.value}\\nWhatsApp: ${buyerwa.value}\\n\\nDESTINATARIO\\n${recipient.value}\\nTeléfono: ${recipientphone.value}\\nProvincia: Sancti Spíritus\\nMunicipio: Yaguajay\\nDirección: ${address.value}\\n\\nPRODUCTOS\\n${lines}\\n\\nTOTAL: ${money(t)} USD\\nObservaciones: ${notes.value}\\nConfirmación: datos revisados por el comprador.`;
-  window.open('https://wa.me/5353204831?text='+encodeURIComponent(msg),'_blank');
+  const t=total();
+  if(t<100)return;
+
+  const date=new Date().toLocaleString('es-CU',{
+    timeZone:'America/Havana'
+  });
+
+  const categories={};
+
+  products.filter(p=>cart[p.id]>0).forEach(p=>{
+    const category=p.category || 'OTROS PRODUCTOS';
+
+    if(!categories[category]){
+      categories[category]=[];
+    }
+
+    categories[category].push(
+      `• ${p.name} x ${cart[p.id]} = ${money(p.price*cart[p.id])}`
+    );
+  });
+
+  const lines=Object.entries(categories)
+    .map(([category,items])=>
+      `\n${category.toUpperCase()}\n${items.join('\n')}`
+    )
+    .join('\n');
+
+  const msg=`DOÑA OLGA - NUEVO PEDIDO
+Fecha y hora (Cuba): ${date}
+
+COMPRADOR
+${buyer.value}
+País: ${country.value}
+Teléfono: ${phone.value}
+WhatsApp: ${buyerwa.value}
+
+DESTINATARIO
+${recipient.value}
+Teléfono: ${recipientphone.value}
+Provincia: Sancti Spíritus
+Municipio: Yaguajay
+Dirección: ${address.value}
+
+PRODUCTOS POR CATEGORÍA
+${lines}
+
+TOTAL: ${money(t)} USD
+Observaciones: ${notes.value}
+Confirmación: datos revisados por el comprador.`;
+
+  window.open(
+    'https://wa.me/5353204831?text='+encodeURIComponent(msg),
+    '_blank'
+  );
 }
 function toggleAdmin(){document.getElementById('adminarea').classList.toggle('hidden')}
 function drawAdmin(){

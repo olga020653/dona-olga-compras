@@ -5,7 +5,7 @@
     "price": 4.15,
     "description": "Café espresso · 284 g",
     "category": "Víveres",
-    "image": "cafe-la-llave.jpg"
+    "": "cafe-la-llave.jpg"
   },
   {
     "id": "crisol",
@@ -13,7 +13,7 @@
     "price": 6.5,
     "description": "Contenido: 1.89 L",
     "category": "Víveres",
-    "image": "aceite-crisol.jpg"
+    "": "aceite-crisol.jpg"
   },
   {
     "id": "leche",
@@ -21,7 +21,7 @@
     "price": 1.6,
     "description": "390 g / 13.8 oz",
     "category": "Víveres",
-    "image": "leche-condensada.jpg"
+    "": "leche-condensada.jpg"
   },
   {
     "id": "choco",
@@ -29,7 +29,7 @@
     "price": 2.0,
     "description": "Golden Selection · 200 g",
     "category": "Víveres",
-    "image": "choco-drink.jpg"
+    "": "choco-drink.jpg"
   },
   {
     "id": "fritamax",
@@ -37,7 +37,7 @@
     "price": 3.4,
     "description": "Aceite vegetal · 900 ml",
     "category": "Víveres",
-    "image": "aceite-fritamax.jpg"
+    "": "aceite-fritamax.jpg"
   },
   {
     "id": "tomate",
@@ -45,6 +45,6 @@
     "price": 1.5,
     "description": "400 g",
     "category": "Víveres",
-    "image": "pasta-tomate.jpg"
+    "": "pasta-tomate.jpg"
   }
 ]

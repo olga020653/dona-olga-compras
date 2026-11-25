@@ -84,7 +84,7 @@ let products = JSON.parse(localStorage.getItem('do_products') || 'null') || seed
 let cart = {};
 
 // Corrige también los datos antiguos guardados en el navegador:
-// si una imagen tiene "images/" al principio, usa el archivo en la raíz.
+// si una imagen tiene "images" al principio, usa el archivo en la raíz.
 products = products.map(p => ({
   ...p,
   image: typeof p.image === 'string' ? p.image.replace(/^images\//, '') : ''

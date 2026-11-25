@@ -321,6 +321,19 @@ Confirmación: datos revisados por el comprador.`;
     '_blank'
   );
 }
+  
+function loginAdmin(){
+  const password=prompt('Introduce la contraseña de administración:');
+
+  if(password==='19831985'){
+    document.getElementById('adminarea').classList.remove('hidden');
+    document.getElementById('adminlogin').classList.add('hidden');
+    drawAdmin();
+  }else if(password!==null){
+    alert('Contraseña incorrecta.');
+  }
+}
+
 function toggleAdmin(){document.getElementById('adminarea').classList.toggle('hidden')}
 function drawAdmin(){
   const el=document.getElementById('adminlist'); if(!el)return;
